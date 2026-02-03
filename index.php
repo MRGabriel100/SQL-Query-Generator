@@ -10,13 +10,13 @@
     
     <header>
 
-        <form action="">
+        <form action="" id="connection">
 
-        <input type="text" name="bdName" placeholder="Database Name">
-        <input type="number" name="bdIp"  placeholder="IP">
-        <input type="number" name="bdPort"  placeholder="Port">
-        <input type="text" name="bdUser"  placeholder="User">
-        <input type="text" name="bdPass" placeholder="Password">
+        <input type="text" name="dbName" placeholder="Database Name">
+        <input type="text" name="dbIp"  placeholder="IP">
+        <input type="number" name="dbPort"  placeholder="Port">
+        <input type="text" name="dbUser"  placeholder="User">
+        <input type="text" name="dbPass" placeholder="Password">
         <button>Connect DataBase</button>
         </form>
     </header>
@@ -46,7 +46,7 @@
     </section>
 </body>
 
-<script src="/js/components.js"></script>
-<script src="/js/functions.js"></script>
-<script src="/js/script.js"></script>
+<script src="./js/components.js"></script>
+<script src="./js/functions.js"></script>
+<script src="./js/script.js"></script>
 </html>
