@@ -1,0 +1,284 @@
+{
+  "create": [
+    {
+      "functions": [
+        {
+          "name": "CREATE DATABASE",
+          "template": "CREATE DATABASE {database_name}"
+        },
+        {
+          "name": "CREATE TABLE",
+          "template": "CREATE TABLE {table_name} ({columns})"
+        },
+        {
+          "name": "CREATE TEMPORARY TABLE",
+          "template": "CREATE TEMPORARY TABLE {table_name} ({columns})"
+        },
+        {
+          "name": "CREATE INDEX",
+          "template": "CREATE INDEX {index_name} ON {table_name} ({columns})"
+        },
+        {
+          "name": "CREATE UNIQUE INDEX",
+          "template": "CREATE UNIQUE INDEX {index_name} ON {table_name} ({columns})"
+        },
+        {
+          "name": "CREATE FULLTEXT INDEX",
+          "template": "CREATE FULLTEXT INDEX {index_name} ON {table_name} ({columns})"
+        },
+        {
+          "name": "CREATE SPATIAL INDEX",
+          "template": "CREATE SPATIAL INDEX {index_name} ON {table_name} ({columns})"
+        },
+        {
+          "name": "CREATE VIEW",
+          "template": "CREATE VIEW {view_name} AS {select_query}"
+        },
+        {
+          "name": "CREATE OR REPLACE VIEW",
+          "template": "CREATE OR REPLACE VIEW {view_name} AS {select_query}"
+        },
+        {
+          "name": "CREATE TRIGGER",
+          "template": "CREATE TRIGGER {trigger_name} {timing} {event} ON {table_name} FOR EACH ROW {trigger_body}"
+        },
+        {
+          "name": "CREATE PROCEDURE",
+          "template": "CREATE PROCEDURE {procedure_name} ({parameters}) BEGIN {body} END"
+        },
+        {
+          "name": "CREATE FUNCTION",
+          "template": "CREATE FUNCTION {function_name} ({parameters}) RETURNS {return_type} BEGIN {body} END"
+        },
+        {
+          "name": "CREATE EVENT",
+          "template": "CREATE EVENT {event_name} ON SCHEDULE {schedule} DO {event_body}"
+        },
+        {
+          "name": "CREATE USER",
+          "template": "CREATE USER '{username}'@'{host}' IDENTIFIED BY '{password}'"
+        }
+      ]
+    }
+  ],
+
+  "alter": [
+    {
+      "functions": [
+        {
+          "name": "ALTER DATABASE",
+          "template": "ALTER DATABASE {database_name} {options}"
+        },
+        {
+          "name": "ALTER TABLE ADD COLUMN",
+          "template": "ALTER TABLE {table_name} ADD COLUMN {column_definition}"
+        },
+        {
+          "name": "ALTER TABLE MODIFY COLUMN",
+          "template": "ALTER TABLE {table_name} MODIFY COLUMN {column_definition}"
+        },
+        {
+          "name": "ALTER TABLE CHANGE COLUMN",
+          "template": "ALTER TABLE {table_name} CHANGE COLUMN {old_column_name} {new_column_definition}"
+        },
+        {
+          "name": "ALTER TABLE DROP COLUMN",
+          "template": "ALTER TABLE {table_name} DROP COLUMN {column_name}"
+        },
+        {
+          "name": "ALTER TABLE ADD CONSTRAINT",
+          "template": "ALTER TABLE {table_name} ADD CONSTRAINT {constraint_definition}"
+        },
+        {
+          "name": "ALTER TABLE DROP CONSTRAINT",
+          "template": "ALTER TABLE {table_name} DROP CONSTRAINT {constraint_name}"
+        },
+        {
+          "name": "ALTER TABLE RENAME TO",
+          "template": "ALTER TABLE {table_name} RENAME TO {new_table_name}"
+        },
+        {
+          "name": "ALTER TABLE RENAME COLUMN",
+          "template": "ALTER TABLE {table_name} RENAME COLUMN {old_column_name} TO {new_column_name}"
+        },
+        {
+          "name": "ALTER TABLE ADD INDEX",
+          "template": "ALTER TABLE {table_name} ADD INDEX {index_name} ({columns})"
+        },
+        {
+          "name": "ALTER TABLE DROP INDEX",
+          "template": "ALTER TABLE {table_name} DROP INDEX {index_name}"
+        },
+        {
+          "name": "ALTER VIEW",
+          "template": "ALTER VIEW {view_name} AS {select_query}"
+        },
+        {
+          "name": "ALTER EVENT",
+          "template": "ALTER EVENT {event_name} {event_definition}"
+        },
+        {
+          "name": "ALTER PROCEDURE",
+          "template": "ALTER PROCEDURE {procedure_name} {procedure_definition}"
+        },
+        {
+          "name": "ALTER FUNCTION",
+          "template": "ALTER FUNCTION {function_name} {function_definition}"
+        },
+        {
+          "name": "ALTER USER",
+          "template": "ALTER USER '{username}'@'{host}' IDENTIFIED BY '{password}'"
+        }
+      ]
+    }
+  ],
+
+   "drop": [
+    {
+      "functions": [
+        {
+          "name": "DROP DATABASE",
+          "template": "DROP DATABASE {database_name}"
+        },
+        {
+          "name": "DROP TABLE",
+          "template": "DROP TABLE {table_name}"
+        },
+        {
+          "name": "DROP TEMPORARY TABLE",
+          "template": "DROP TEMPORARY TABLE {table_name}"
+        },
+        {
+          "name": "DROP INDEX",
+          "template": "DROP INDEX {index_name} ON {table_name}"
+        },
+        {
+          "name": "DROP VIEW",
+          "template": "DROP VIEW {view_name}"
+        },
+        {
+          "name": "DROP TRIGGER",
+          "template": "DROP TRIGGER {trigger_name}"
+        },
+        {
+          "name": "DROP PROCEDURE",
+          "template": "DROP PROCEDURE {procedure_name}"
+        },
+        {
+          "name": "DROP FUNCTION",
+          "template": "DROP FUNCTION {function_name}"
+        },
+        {
+          "name": "DROP EVENT",
+          "template": "DROP EVENT {event_name}"
+        },
+        {
+          "name": "DROP USER",
+          "template": "DROP USER '{username}'@'{host}'"
+        }
+      ]
+    }
+  ],
+
+  "globals": {
+    "SELECT" : "SELECT",
+    "INSERT" : "INSERT INTO",
+    "FROM"   : "FROM",
+    "UPDATE" : "UPDATE",
+    "DELETE" : "DELETE",
+    "REPLACE": "REPLACE",
+    "CALL"   : "CALL",
+    "DISTINCT": "DISTINCT",
+    "WHERE"  : "WHERE",
+    "GROUP"  : "GROUP BY",
+    "ORDER"  : "ORDER BY",
+    "HAVING" : "HAVING",
+    "LIMIT"  : "LIMIT",
+    "OFFSET" : "OFFSET"
+
+  },
+
+  "joins": {
+
+    "INNER" : "INNER JOIN [] ON [] = []",
+    "LEFT" : "LEFT JOIN [] ON [] = []",
+    "RIGHT" : "RIGHT JOIN [] ON [] = []",
+    "CROSS" : "CROSS JOIN [] ON [] = []",
+    "SELF" : "SELF JOIN [] ON [] = []"
+  },
+
+  "subs": {
+
+    "IN": "IN",
+    "EXISTS": "EXISTS",
+    "ANY": "ANY",
+    "ALL": "ALL",
+    "ON": "ON"
+  },
+
+  "comparison": {
+
+    "BETWEEN": "BETWEEN",
+    "LIKE": "LIKE",
+    "NOT_L": "NOT LIKE",
+    "IS_NULL": "IS NULL",
+    "NOT_NULL": "IS NOT NULL"
+  },
+
+  "logics" : {
+
+    "AND": "AND",
+    "OR": "OR",
+    "NOT": "NOT",
+    "XOR": "XOR"
+  },
+
+  "quantifiers": {
+        "COUNT": "COUNT()",
+        "SUM": "SUM()",
+        "AVG": "AVG()",
+        "MIN": "MIN()",
+        "MAX": "MAX()",
+        "GROUP_CONCAT": "GROUP_CONCAT()"
+
+  },
+
+  "string_func": {
+
+    "CONCAT": "CONCAT()",
+    "SUBSTRING": "SUBSTRING()",
+    "LENGTH": "LENGTH()",
+    "LOWER": "LOWER()",
+    "UPPER": "UPPER()",
+    "TRIM": "TRIM()",
+    "REPLACE": "REPLACE()",
+    "LEFT": "LEFT()",
+    "RIGHT": "RIGHT()"
+
+  },
+
+  "numeric_func": {
+
+    "ROUND": "ROUND()",
+    "CEIL": "CEIL()",
+    "FLOOR": "FLOOR()",
+    "ABS": "ABS()",
+    "RAND": "RAND()"
+  },
+
+  "time": {
+
+    "NOW": "NOW()",
+    "CURDATE": "CURDATE()",
+    "CURTIME": "CURTIME()",
+    "DATE": "DATE()",
+    "DATEDIFF": "DATEDIFF()",
+    "DATE_ADD": "DATE_ADD()",
+    "DATE_SUB": "DATE_SUB()",
+    "TIMESTAMPDIFF": "TIMESTAMPDIFF()",
+    "YEAR": "YEAR()",
+    "MONTH": "MONTH()",
+    "DAY": "DAY()"
+
+  }
+}
