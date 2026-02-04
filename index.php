@@ -24,16 +24,22 @@
     <section>
 
         <section id="Tables">
+            <p>Tables</p>
             <ul id="tableList"></ul>
         </section>
 
         <section id="Canva">
 
+        </section>
+
+        <section id="components">
+
+
             <ul id="componentList">
                 <li>Components V</li>
             </ul>
         </section>
-
+        
         <section id="Queries">
 
             <input type="text" name="queryTxt" id="queryText">

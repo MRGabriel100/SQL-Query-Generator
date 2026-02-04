@@ -1,7 +1,6 @@
 {
-  "create": [
-    {
-      "functions": [
+  "create": 
+     [
         {
           "name": "CREATE DATABASE",
           "template": "CREATE DATABASE {database_name}"
@@ -59,12 +58,10 @@
           "template": "CREATE USER '{username}'@'{host}' IDENTIFIED BY '{password}'"
         }
       ]
-    }
-  ],
+    
+  ,
 
   "alter": [
-    {
-      "functions": [
         {
           "name": "ALTER DATABASE",
           "template": "ALTER DATABASE {database_name} {options}"
@@ -130,12 +127,11 @@
           "template": "ALTER USER '{username}'@'{host}' IDENTIFIED BY '{password}'"
         }
       ]
-    }
-  ],
+    
+  ,
 
-   "drop": [
-    {
-      "functions": [
+   "drop": 
+    [
         {
           "name": "DROP DATABASE",
           "template": "DROP DATABASE {database_name}"
@@ -177,108 +173,97 @@
           "template": "DROP USER '{username}'@'{host}'"
         }
       ]
-    }
-  ],
+    
+  ,
+"globals": [
+  { "name": "SELECT", "template": "SELECT" },
+  { "name": "INSERT", "template": "INSERT INTO" },
+  { "name": "FROM", "template": "FROM" },
+  { "name": "UPDATE", "template": "UPDATE" },
+  { "name": "DELETE", "template": "DELETE" },
+  { "name": "REPLACE", "template": "REPLACE" },
+  { "name": "CALL", "template": "CALL" },
+  { "name": "DISTINCT", "template": "DISTINCT" },
+  { "name": "WHERE", "template": "WHERE" },
+  { "name": "GROUP", "template": "GROUP BY" },
+  { "name": "ORDER", "template": "ORDER BY" },
+  { "name": "HAVING", "template": "HAVING" },
+  { "name": "LIMIT", "template": "LIMIT" },
+  { "name": "OFFSET", "template": "OFFSET" }
+],
 
-  "globals": {
-    "SELECT" : "SELECT",
-    "INSERT" : "INSERT INTO",
-    "FROM"   : "FROM",
-    "UPDATE" : "UPDATE",
-    "DELETE" : "DELETE",
-    "REPLACE": "REPLACE",
-    "CALL"   : "CALL",
-    "DISTINCT": "DISTINCT",
-    "WHERE"  : "WHERE",
-    "GROUP"  : "GROUP BY",
-    "ORDER"  : "ORDER BY",
-    "HAVING" : "HAVING",
-    "LIMIT"  : "LIMIT",
-    "OFFSET" : "OFFSET"
+"joins": [
+  { "name": "INNER", "template": "INNER JOIN [] ON [] = []" },
+  { "name": "LEFT", "template": "LEFT JOIN [] ON [] = []" },
+  { "name": "RIGHT", "template": "RIGHT JOIN [] ON [] = []" },
+  { "name": "CROSS", "template": "CROSS JOIN [] ON [] = []" },
+  { "name": "SELF", "template": "SELF JOIN [] ON [] = []" }
+],
 
-  },
+"subs": [
+  { "name": "IN", "template": "IN" },
+  { "name": "EXISTS", "template": "EXISTS" },
+  { "name": "ANY", "template": "ANY" },
+  { "name": "ALL", "template": "ALL" },
+  { "name": "ON", "template": "ON" }
+],
 
-  "joins": {
+"comparison": [
+  { "name": "BETWEEN", "template": "BETWEEN" },
+  { "name": "LIKE", "template": "LIKE" },
+  { "name": "NOT_L", "template": "NOT LIKE" },
+  { "name": "IS_NULL", "template": "IS NULL" },
+  { "name": "NOT_NULL", "template": "IS NOT NULL" }
+],
 
-    "INNER" : "INNER JOIN [] ON [] = []",
-    "LEFT" : "LEFT JOIN [] ON [] = []",
-    "RIGHT" : "RIGHT JOIN [] ON [] = []",
-    "CROSS" : "CROSS JOIN [] ON [] = []",
-    "SELF" : "SELF JOIN [] ON [] = []"
-  },
+"logics": [
+  { "name": "AND", "template": "AND" },
+  { "name": "OR", "template": "OR" },
+  { "name": "NOT", "template": "NOT" },
+  { "name": "XOR", "template": "XOR" }
+],
 
-  "subs": {
+"quantifiers": [
+  { "name": "COUNT", "template": "COUNT()" },
+  { "name": "SUM", "template": "SUM()" },
+  { "name": "AVG", "template": "AVG()" },
+  { "name": "MIN", "template": "MIN()" },
+  { "name": "MAX", "template": "MAX()" },
+  { "name": "GROUP_CONCAT", "template": "GROUP_CONCAT()" }
+],
 
-    "IN": "IN",
-    "EXISTS": "EXISTS",
-    "ANY": "ANY",
-    "ALL": "ALL",
-    "ON": "ON"
-  },
+"string_func": [
+  { "name": "CONCAT", "template": "CONCAT()" },
+  { "name": "SUBSTRING", "template": "SUBSTRING()" },
+  { "name": "LENGTH", "template": "LENGTH()" },
+  { "name": "LOWER", "template": "LOWER()" },
+  { "name": "UPPER", "template": "UPPER()" },
+  { "name": "TRIM", "template": "TRIM()" },
+  { "name": "REPLACE", "template": "REPLACE()" },
+  { "name": "LEFT", "template": "LEFT()" },
+  { "name": "RIGHT", "template": "RIGHT()" }
+],
 
-  "comparison": {
+"numeric_func": [
+  { "name": "ROUND", "template": "ROUND()" },
+  { "name": "CEIL", "template": "CEIL()" },
+  { "name": "FLOOR", "template": "FLOOR()" },
+  { "name": "ABS", "template": "ABS()" },
+  { "name": "RAND", "template": "RAND()" }
+],
 
-    "BETWEEN": "BETWEEN",
-    "LIKE": "LIKE",
-    "NOT_L": "NOT LIKE",
-    "IS_NULL": "IS NULL",
-    "NOT_NULL": "IS NOT NULL"
-  },
+"time": [
+  { "name": "NOW", "template": "NOW()" },
+  { "name": "CURDATE", "template": "CURDATE()" },
+  { "name": "CURTIME", "template": "CURTIME()" },
+  { "name": "DATE", "template": "DATE()" },
+  { "name": "DATEDIFF", "template": "DATEDIFF()" },
+  { "name": "DATE_ADD", "template": "DATE_ADD()" },
+  { "name": "DATE_SUB", "template": "DATE_SUB()" },
+  { "name": "TIMESTAMPDIFF", "template": "TIMESTAMPDIFF()" },
+  { "name": "YEAR", "template": "YEAR()" },
+  { "name": "MONTH", "template": "MONTH()" },
+  { "name": "DAY", "template": "DAY()" }
+]
 
-  "logics" : {
-
-    "AND": "AND",
-    "OR": "OR",
-    "NOT": "NOT",
-    "XOR": "XOR"
-  },
-
-  "quantifiers": {
-        "COUNT": "COUNT()",
-        "SUM": "SUM()",
-        "AVG": "AVG()",
-        "MIN": "MIN()",
-        "MAX": "MAX()",
-        "GROUP_CONCAT": "GROUP_CONCAT()"
-
-  },
-
-  "string_func": {
-
-    "CONCAT": "CONCAT()",
-    "SUBSTRING": "SUBSTRING()",
-    "LENGTH": "LENGTH()",
-    "LOWER": "LOWER()",
-    "UPPER": "UPPER()",
-    "TRIM": "TRIM()",
-    "REPLACE": "REPLACE()",
-    "LEFT": "LEFT()",
-    "RIGHT": "RIGHT()"
-
-  },
-
-  "numeric_func": {
-
-    "ROUND": "ROUND()",
-    "CEIL": "CEIL()",
-    "FLOOR": "FLOOR()",
-    "ABS": "ABS()",
-    "RAND": "RAND()"
-  },
-
-  "time": {
-
-    "NOW": "NOW()",
-    "CURDATE": "CURDATE()",
-    "CURTIME": "CURTIME()",
-    "DATE": "DATE()",
-    "DATEDIFF": "DATEDIFF()",
-    "DATE_ADD": "DATE_ADD()",
-    "DATE_SUB": "DATE_SUB()",
-    "TIMESTAMPDIFF": "TIMESTAMPDIFF()",
-    "YEAR": "YEAR()",
-    "MONTH": "MONTH()",
-    "DAY": "DAY()"
-
-  }
 }
