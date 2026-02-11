@@ -29,7 +29,9 @@
         </section>
 
         <section id="Canva">
+            <ul id="canvaList">
 
+            </ul>
         </section>
 
         <section id="components">
