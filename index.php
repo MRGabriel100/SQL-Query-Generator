@@ -29,7 +29,7 @@
         </section>
 
         <section id="Canva">
-            <ul id="canvaList">
+            <ul id="blockList">
 
             </ul>
         </section>

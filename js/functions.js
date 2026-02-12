@@ -79,7 +79,7 @@ function createComponent(component){
             const functionLi = document.createElement('li');
             functionLi.innerText = fun.name;
             functionLi.addEventListener('click', () => {
-                createBlock(fun.template)
+                createBlock(fun.template, fun.name);
             })
             ul.appendChild(functionLi);
         });
@@ -91,12 +91,18 @@ function createComponent(component){
 
 
 //FUNCITION RESPONSIBLE FOR CREATING THE COMPONENTS BLOCKS
-const canva = document.getElementById("canvaList");
+const canva = document.getElementById("blockList");
 
-function createBlock(block){
+function createBlock(block, name){
 const container = document.createElement('li');
+      container.id = `${name}_id`;
+      const regex = /(\{.*?\}|\(\))/g;
 
-     const regex = /(\{.*?\}|\(\))/g;
+      
+        //GONNA BE NECESSARY TO  BUILD A CHECKER TO PREVENT DUPLICATED IDS
+        const x = document.createElement('button');
+        x.addEventListener("click", () => {removeBlock(`${name}_id`)});
+        x.innerText = "X";
 
     const parts = block.split(regex);
 
@@ -104,34 +110,38 @@ const container = document.createElement('li');
         if(part === ""){
             return
         }
+        
+        const input = document.createElement('input');
         // Placeholder {}
         if(part.startsWith("{") && part.endsWith("}")){
 
-            const input = document.createElement('input');
             input.placeholder = part.replace(/[{}]/g, '');
-
-            container.appendChild(input);
 
         }
         // Função ()
         else if(part === "()"){
 
-            const input = document.createElement('input');
             input.value = "( )";
-
-            container.appendChild(input);
 
         }
         // Texto normal
         else{
 
-            const input = document.createElement('input');
             input.value = part;
 
-            container.appendChild(input);
         }
 
+            container.appendChild(input);
     });
 
-canva.appendChild(container);
+    container.appendChild(x);
+    canva.appendChild(container);
+}
+
+function removeBlock(blockId){
+    const blockList = document.getElementById("blockList");
+    const block = document.getElementById(blockId);
+
+    block.remove();
+
 }
