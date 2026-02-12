@@ -42,8 +42,8 @@
             </ul>
         </section>
         
-        <section id="Queries">
-
+        <section id="queryCopy">
+            <p></p>
             <input type="text" name="queryTxt" id="queryText">
         </section>
 

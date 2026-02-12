@@ -112,6 +112,7 @@ const container = document.createElement('li');
         }
         
         const input = document.createElement('input');
+        input.classList.add('blockItem')
         // Placeholder {}
         if(part.startsWith("{") && part.endsWith("}")){
 
@@ -136,12 +137,29 @@ const container = document.createElement('li');
 
     container.appendChild(x);
     canva.appendChild(container);
+
+    textQuery();
 }
 
+//THE NAME IS SELF-EXPLANATORY
 function removeBlock(blockId){
-    const blockList = document.getElementById("blockList");
     const block = document.getElementById(blockId);
 
     block.remove();
+    textQuery();
 
+}
+
+//CREATE THE COPYABLE QUERY
+function textQuery(){
+
+    const queryCopy = document.querySelector("#queryCopy p");
+    const blockList = [...document.querySelectorAll(".blockItem")];
+
+    const query = blockList.reduce((query, input) => {
+        
+        return `${query} ${input.value}`;
+    }, "");
+
+    queryCopy.innerText = query;
 }
