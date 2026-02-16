@@ -3,23 +3,39 @@ window.onload = loadOperators();
 
 //CONNECT WITH THE DB AND PREVENT THE PAGE FROM RELOADING
 
-const connect = document.getElementById('connection');
 
-connect.addEventListener('submit', (e) => {
+const handlers = {
+    connect: async (responseData) => {
+      tableList(responseData);
+    },
+    testQuery: async (responseData) => {
+        console.log("Test Query:", responseData);
+    },
+}
+document.addEventListener('submit',async e => {
 
     e.preventDefault();
+    const form = e.target;
+    const url = form.action;
+    const method = form.method;
+    const handlerName = form.dataset.handler;
 
-    const formData = new FormData(connect);
+    try {
 
-    fetch('./php/connect.php', {
+        const response = await fetch(url,{
+            method,
+            body: new FormData(form)
+        });
 
-        method: "POST",
-        body: formData
-    })
-    .then(result => result.json())
-    .then(data => tableList(data));
+        const data = await response.json();
+
+        handlers[handlerName](data);
+         
+    } catch (error) {
+        console.error(error);
+    }
+  
 });
-
 //CONTROL THE DRAGGABLE OBJECTS
 const list = document.getElementById("blockList");
 
@@ -48,5 +64,3 @@ list.addEventListener("dragend", (e) => {
     draggedItem = null;
     textQuery();
 });
-
-//TEST THE QUERY AND PREVENT THE PAGE FROM RELOADING

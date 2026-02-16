@@ -10,7 +10,7 @@
     
     <header>
 
-        <form action="" id="connection">
+        <form action="php/connect.php" id="connection" data-handler="connect" method="POST">
 
         <input type="text" name="dbName" placeholder="Database Name">
         <input type="text" name="dbIp"  placeholder="IP">
