@@ -43,8 +43,11 @@
         </section>
         
         <section id="queryCopy">
-            <p></p>
-            <input type="text" name="queryTxt" id="queryText">
+            <form action="POST">
+            <textarea name="queryReady" id="textQuery"></textarea>
+            <button type="submit">Test Query</button>
+            <button type="button" onclick="copy(textQuery.value)">Copy Query</button>
+            </form>
         </section>
 
         <section id="result">

@@ -50,3 +50,9 @@ ul {
     .menu-item:hover .submenu {
         display: block;
     }
+
+    #blockList {
+
+        display: flex;
+        flex-wrap: wrap;
+    }

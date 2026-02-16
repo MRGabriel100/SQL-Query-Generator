@@ -1,20 +1,3 @@
-const connect = document.getElementById('connection');
-
-connect.addEventListener('submit', (e) => {
-
-    e.preventDefault();
-
-    const formData = new FormData(connect);
-
-    fetch('./php/connect.php', {
-
-        method: "POST",
-        body: formData
-    })
-    .then(result => result.json())
-    .then(data => tableList(data));
-});
-
 
 //FUNCTION RESPONSIBLE FOR GENERATING THE VISUAL LIST
 function tableList(data){
@@ -96,6 +79,7 @@ const canva = document.getElementById("blockList");
 function createBlock(block, name){
 const container = document.createElement('li');
       container.id = `${name}_id`;
+      container.draggable = 'true';
       const regex = /(\{.*?\}|\(\))/g;
 
       
@@ -119,13 +103,11 @@ const container = document.createElement('li');
             input.placeholder = part.replace(/[{}]/g, '');
 
         }
-        // Função ()
         else if(part === "()"){
 
             input.value = "( )";
 
         }
-        // Texto normal
         else{
 
             input.value = part;
@@ -153,7 +135,7 @@ function removeBlock(blockId){
 //CREATE THE COPYABLE QUERY
 function textQuery(){
 
-    const queryCopy = document.querySelector("#queryCopy p");
+    const queryCopy = document.getElementById("textQuery");
     const blockList = [...document.querySelectorAll(".blockItem")];
 
     const query = blockList.reduce((query, input) => {
@@ -161,5 +143,32 @@ function textQuery(){
         return `${query} ${input.value}`;
     }, "");
 
-    queryCopy.innerText = query;
+    queryCopy.value = query;
+}
+
+function copy(value){
+
+    navigator.clipboard.writeText(value);
+
+
+}
+
+//ORGANIZE THE DRAGGED ELEMENT
+
+function getDragAfterElement(container, x) {
+    const draggableElements = [
+        ...container.querySelectorAll("li:not(.dragging)")
+    ];
+
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = x - box.left - box.width / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
