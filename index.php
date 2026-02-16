@@ -43,7 +43,7 @@
         </section>
         
         <section id="queryCopy">
-            <form action="POST">
+            <form action="php/exec.php" method="POST" data-handler="testQuery">
             <textarea name="queryReady" id="textQuery"></textarea>
             <button type="submit">Test Query</button>
             <button type="button" onclick="copy(textQuery.value)">Copy Query</button>
