@@ -9,7 +9,7 @@ const handlers = {
       tableList(responseData);
     },
     testQuery: async (responseData) => {
-        console.log("Test Query:", responseData);
+        createTable(responseData);
     },
 }
 document.addEventListener('submit',async e => {

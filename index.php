@@ -51,7 +51,7 @@
         </section>
 
         <section id="result">
-
+        <p id="resultMsg"></p>
         <table id="queryResults"></table>
         </section>
     </section>

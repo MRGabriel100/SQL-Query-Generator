@@ -172,3 +172,59 @@ function getDragAfterElement(container, x) {
 
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
+
+//CREATES THE TABLES
+function createTable(values) {
+
+
+    const table = document.getElementById('queryResults');
+    table.innerHTML = "";
+
+    const resultMsg = document.getElementById('resultMsg');
+
+
+        //CHECKS IF THE VALUES IS A OBJECT, IF NOT INPUTS THE MESSAGE
+    if(typeof values != "object"){
+
+        resultMsg.innerText = values;
+
+        return
+    }
+    resultMsg.innerText = "";
+
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    const headerRow = document.createElement('tr');
+
+    const columns = Object.keys(values);
+
+    // Create the header
+    columns.forEach(column => {
+        const th = document.createElement('th');
+        th.innerText = column;
+        headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+
+    
+    const rowCount = values[columns[0]].length;
+
+    // Create Rows
+    for (let i = 0; i < rowCount; i++) {
+
+        const tr = document.createElement('tr');
+
+        columns.forEach(column => {
+            const td = document.createElement('td');
+            td.innerText = values[column][i];
+            tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+    }
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+}

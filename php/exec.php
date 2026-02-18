@@ -15,10 +15,19 @@ try {
     $stmt = $db->prepare($query);
     $stmt->execute();
 
-    // Verifica se a query retorna resultado
+    // Verify if the query returns a result
     if ($stmt->columnCount() > 0) {
 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = [];
+
+        foreach ($data as $row){
+
+            foreach($row as $column => $value){
+
+                $result[$column][] = $value;
+            }
+        }
 
         echo json_encode($result
         );
